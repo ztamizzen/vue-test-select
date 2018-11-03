@@ -1,60 +1,155 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <div class="vue-info">
+      <select-or-list title="Installed CLI Plugins" :list="installedPlugins" :mobile="mobile" />
+      <select-or-list title="Essential Links" :list="essential" :mobile="mobile" />
+      <select-or-list title="Ecosystem" :list="ecosystem" :mobile="mobile" />
+    </div>
+
     <p>
       For guide and recipes on how to configure / customize this project,<br>
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa" target="_blank" rel="noopener">pwa</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest" target="_blank" rel="noopener">unit-jest</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+<script>
+import SelectOrList from '@/components/SelectOrList';
 
-@Component
-export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+export default {
+  name: 'HelloWorld',
+  props: ['msg'],
+  components: {
+    SelectOrList
+  },
+  data() {
+    return {
+      mobile: true,
+      installedPlugins: [{
+        label: 'babel',
+        value: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel',
+      }, {
+        label: 'typescript',
+        value: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript',
+      }, {
+        label: 'pwa',
+        value: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa',
+      }, {
+        label: 'unit-jest',
+        value: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest',
+      }],
+      essential: [{
+        label: "Core Docs",
+        value: "https://vuejs.org"
+      }, {
+        label: "Forum",
+        value: "https://forum.vuejs.org"
+      }, {
+        label: "Community Chat",
+        value: "https://chat.vuejs.org"
+      }, {
+        label: "Twitter",
+        value: "https://twitter.com/vuejs"
+      }, {
+        label: "News",
+        value: "https://news.vuejs.org"
+      }],
+      ecosystem: [{
+        label: "vue-router",
+        value: "https://router.vuejs.org"
+      }, {
+        label: "vuex",
+        value: "https://vuex.vuejs.org"
+      }, {
+        label: "vue-devtools",
+        value: "https://github.com/vuejs/vue-devtools#vue-devtools"
+      }, {
+        label: "vue-loader",
+        value: "https://vue-loader.vuejs.org"
+      }, {
+        label: "awesome-vue",
+        value: "https://github.com/vuejs/awesome-vue"
+      }],
+      maxWidth: '940px',
+      maxWidthMediaQueryList: null
+    };
+  },
+  methods: {
+    widthChanged(mql) {
+      this.mobile = mql.matches;
+    },
+    matchMedia() {
+      this.maxWidthMediaQueryList = matchMedia(`(max-width: ${this.maxWidth})`);
+      this.maxWidthMediaQueryList.addListener(this.widthChanged);
+      this.widthChanged(this.maxWidthMediaQueryList);
+    }
+  },
+  beforeDestroy() {
+    this.maxWidthMediaQueryList.removeListener(this.widthChanged);
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.matchMedia();
+    });
+  },
+  updated() {
+    this.$nextTick(() => {
+      if (!this.maxWidthMediaQueryList) {
+        this.matchMedia();
+      }
+    });
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
+<style lang="scss">
+.hello {
+  margin: auto;
+  max-width: 980px
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.vue-info {
+  align-items: stretch;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+  @media (max-width: 680px) {
+    flex-direction: column
+  }
+
+  &__items {
+    background-color: #ffffffaa;
+    border: 1px solid #00000055;
+    flex-basis: 33%;
+    flex-grow: 1;
+    margin: 0 1rem;
+    padding: 0 1rem 1rem;
+    @media (max-width: 680px) {
+      border: 0;
+      border-bottom: 1px solid #00000055;
+      margin-bottom: 1rem;
+    }
+
+    &.narrow {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin: .5rem .5rem
+        }
+      }
+    }
+  }
+
+  .v-select {
+    background-color: azure
+  }
 }
 </style>

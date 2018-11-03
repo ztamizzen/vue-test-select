@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  
+    <symbol id="svg-icon-chevron-down" viewBox="0 0 512 512">
+      <path d="m352 160l-96 96-96-96-64 64 160 160 160-160z"/>
+    </symbol>
+  
+    <symbol id="svg-icon-chevron-up" viewBox="0 0 512 512">
+      <path d="m256 128l-160 160 64 64 96-96 96 96 64-64z"/>
+    </symbol>
+  
+</svg>
