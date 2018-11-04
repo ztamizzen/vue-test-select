@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import MySelect from '@/components/my-select.vue';
+import MySelect from "@/components/my-select.vue";
 
 export default {
-  name: 'About',
+  name: "About",
   components: {
     MySelect
   }
-}
+};
 </script>

@@ -12,22 +12,22 @@
 
 <script>
 export default {
-    name: "SelectOrList",
-    props: {
-        list: {
-            type: Array,
-            default: [],
-            required: true
-        },
-        mobile: {
-            type: Boolean,
-            default: true,
-            required: false
-        },
-        title: {
-            type: String,
-            required: true
-        }
+  name: "SelectOrList",
+  props: {
+    list: {
+      type: Array,
+      default: () => [],
+      required: true
+    },
+    mobile: {
+      type: Boolean,
+      default: true,
+      required: false
+    },
+    title: {
+      type: String,
+      required: true
     }
-}
+  }
+};
 </script>

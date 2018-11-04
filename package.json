@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "vue-cli-service serve --open",
+    "build": "vue-cli-service build --mode=development --modern",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -17,15 +17,21 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.1.0",
+    "@vue/cli-plugin-eslint": "^3.1.4",
     "@vue/cli-plugin-pwa": "^3.1.0",
     "@vue/cli-plugin-unit-jest": "^3.1.0",
     "@vue/cli-service": "^3.1.0",
+    "@vue/eslint-config-prettier": "^3.0.5",
     "@vue/test-utils": "^1.0.0-beta.25",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "svg-inline-loader": "^0.8.0",
     "vue-template-compiler": "^2.5.17",
     "node-sass": "^4.9.4",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "yorkie": "^2.0.0"
+  },
+  "gitHooks": {
+    "pre-commit": "vue-cli-service lint"
   }
 }

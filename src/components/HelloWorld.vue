@@ -16,63 +16,84 @@
 </template>
 
 <script>
-import SelectOrList from '@/components/SelectOrList';
+import SelectOrList from "@/components/SelectOrList";
 
 export default {
-  name: 'HelloWorld',
-  props: ['msg'],
+  name: "HelloWorld",
+  props: ["msg"],
   components: {
     SelectOrList
   },
   data() {
     return {
       mobile: true,
-      installedPlugins: [{
-        label: 'babel',
-        value: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel',
-      }, {
-        label: 'typescript',
-        value: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript',
-      }, {
-        label: 'pwa',
-        value: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa',
-      }, {
-        label: 'unit-jest',
-        value: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest',
-      }],
-      essential: [{
-        label: "Core Docs",
-        value: "https://vuejs.org"
-      }, {
-        label: "Forum",
-        value: "https://forum.vuejs.org"
-      }, {
-        label: "Community Chat",
-        value: "https://chat.vuejs.org"
-      }, {
-        label: "Twitter",
-        value: "https://twitter.com/vuejs"
-      }, {
-        label: "News",
-        value: "https://news.vuejs.org"
-      }],
-      ecosystem: [{
-        label: "vue-router",
-        value: "https://router.vuejs.org"
-      }, {
-        label: "vuex",
-        value: "https://vuex.vuejs.org"
-      }, {
-        label: "vue-devtools",
-        value: "https://github.com/vuejs/vue-devtools#vue-devtools"
-      }, {
-        label: "vue-loader",
-        value: "https://vue-loader.vuejs.org"
-      }, {
-        label: "awesome-vue",
-        value: "https://github.com/vuejs/awesome-vue"
-      }],
-      maxWidth: '940px',
+      installedPlugins: [
+        {
+          label: "babel",
+          value:
+            "https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
+        },
+        {
+          label: "typescript",
+          value:
+            "https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
+        },
+        {
+          label: "pwa",
+          value:
+            "https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa"
+        },
+        {
+          label: "unit-jest",
+          value:
+            "https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest"
+        }
+      ],
+      essential: [
+        {
+          label: "Core Docs",
+          value: "https://vuejs.org"
+        },
+        {
+          label: "Forum",
+          value: "https://forum.vuejs.org"
+        },
+        {
+          label: "Community Chat",
+          value: "https://chat.vuejs.org"
+        },
+        {
+          label: "Twitter",
+          value: "https://twitter.com/vuejs"
+        },
+        {
+          label: "News",
+          value: "https://news.vuejs.org"
+        }
+      ],
+      ecosystem: [
+        {
+          label: "vue-router",
+          value: "https://router.vuejs.org"
+        },
+        {
+          label: "vuex",
+          value: "https://vuex.vuejs.org"
+        },
+        {
+          label: "vue-devtools",
+          value: "https://github.com/vuejs/vue-devtools#vue-devtools"
+        },
+        {
+          label: "vue-loader",
+          value: "https://vue-loader.vuejs.org"
+        },
+        {
+          label: "awesome-vue",
+          value: "https://github.com/vuejs/awesome-vue"
+        }
+      ],
+      maxWidth: "940px",
       maxWidthMediaQueryList: null
     };
   },
@@ -101,14 +122,14 @@ export default {
       }
     });
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .hello {
   margin: auto;
-  max-width: 980px
+  max-width: 980px;
 }
 .vue-info {
   align-items: stretch;
@@ -116,7 +137,7 @@ export default {
   justify-content: space-evenly;
   margin-bottom: 2rem;
   @media (max-width: 680px) {
-    flex-direction: column
+    flex-direction: column;
   }
 
   &__items {
@@ -142,14 +163,14 @@ export default {
         padding: 0;
 
         li {
-          margin: .5rem .5rem
+          margin: 0.5rem 0.5rem;
         }
       }
     }
   }
 
   .v-select {
-    background-color: azure
+    background-color: azure;
   }
 }
 </style>

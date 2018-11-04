@@ -4,14 +4,14 @@
 
 <script>
 export default {
-    name: "SvgIcon",
-    props: ["src"]
-}
+  name: "SvgIcon",
+  props: ["src"]
+};
 </script>
 
 <style scoped>
 .glyph-container {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 </style>

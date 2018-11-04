@@ -1,90 +1,93 @@
 <script>
-  function onToggle(e) {
-    let dropdown = e.target.closest('.dropdown');
-    dropdown.classList.toggle('open', !dropdown.classList.contains('open'));
+function onToggle(e) {
+  let dropdown = e.target.closest(".dropdown");
+  dropdown.classList.toggle("open", !dropdown.classList.contains("open"));
+}
+
+function onSelect(e) {
+  e.preventDefault();
+  let text = e.target.textContent;
+  let dropdown = e.target.closest(".dropdown");
+  let dropdownToggle = dropdown.querySelector(".dropdown-toggle");
+  dropdown.classList.toggle("open", false);
+  dropdownToggle.textContent = text;
+  return false;
+}
+
+function onMouseOver(e) {
+  let dropdownToggle = document.querySelector(".dropdown-toggle");
+  dropdownToggle.textContent = e.target.textContent;
+}
+
+let data = [
+  {
+    controls: "id-of-thing",
+    title: "Tab one"
+  },
+  {
+    controls: "id-of-other-thing",
+    title: "Tab two"
   }
+];
 
-  function onSelect(e) {
-    e.preventDefault();
-    let text = e.target.textContent;
-    let dropdown = e.target.closest('.dropdown');
-    let dropdownToggle = dropdown.querySelector('.dropdown-toggle');
-    dropdown.classList.toggle('open', false);
-    dropdownToggle.textContent = text;
-    return false;
-  }
+function createToggleDiv(defaultValue) {
+  let selectOptions = document.createElement("div");
+  selectOptions.classList.add("dropdown-toggle");
+  selectOptions.addEventListener("click", onToggle);
+  selectOptions.textContent = defaultValue.title;
+  selectOptions.dataset.controls = defaultValue.controls;
 
-  function onMouseOver(e) {
-    let dropdownToggle = document.querySelector('.dropdown-toggle');
-    dropdownToggle.textContent = e.target.textContent;
-  }
-
-  let data = [{
-    controls: 'id-of-thing',
-    title: 'Tab one'
-  }, {
-    controls: 'id-of-other-thing',
-    title: 'Tab two'
-  }];
-  
-  function createToggleDiv(defaultValue) {
-    let selectOptions = document.createElement('div');
-    selectOptions.classList.add('dropdown-toggle');
-    selectOptions.addEventListener('click', onToggle);
-    selectOptions.textContent = defaultValue.title;
-    selectOptions.dataset.controls = defaultValue.controls;
-
-    let chevron = document.createElement('span');
-    chevron.classList.add('svg-icon');
-    chevron.innerHTML = `<svg class="svg-icon-chevron-down">
+  let chevron = document.createElement("span");
+  chevron.classList.add("svg-icon");
+  chevron.innerHTML = `<svg class="svg-icon-chevron-down">
       <use xlink:href="#svg-icon-chevron-down"></use>
     </svg>`;
-    selectOptions.appendChild(chevron);
+  selectOptions.appendChild(chevron);
 
-    return selectOptions;
-  }
+  return selectOptions;
+}
 
 function createDropdown() {
-    let fragment = new DocumentFragment();
-    let defaultValue = data[0];
-    
-    let wrapperDiv = document.createElement('div');
-    wrapperDiv.classList.add('dropdown');
-    fragment.appendChild(wrapperDiv);
+  let fragment = new DocumentFragment();
+  let defaultValue = data[0];
 
-    wrapperDiv.appendChild(createToggleDiv(defaultValue));
+  let wrapperDiv = document.createElement("div");
+  wrapperDiv.classList.add("dropdown");
+  fragment.appendChild(wrapperDiv);
 
-    let options = document.createElement('ul');
-    options.classList.add('dropdown-menu');
-    options.setAttribute('role', 'listbox');
-    wrapperDiv.appendChild(options);
+  wrapperDiv.appendChild(createToggleDiv(defaultValue));
 
-    for (let item of data) {
-      let option = document.createElement('li');
-      option.setAttribute('role', 'option');
-      options.appendChild(option);
-      let link = document.createElement('a');
-      link.setAttribute('href', `#${item.controls}`);
-      link.textContent = item.title;
-      link.addEventListener('click', onSelect);
-      link.addEventListener('mouseover', onMouseOver);
-      option.appendChild(link);
-    }
-    return fragment;
+  let options = document.createElement("ul");
+  options.classList.add("dropdown-menu");
+  options.setAttribute("role", "listbox");
+  wrapperDiv.appendChild(options);
+
+  for (let item of data) {
+    let option = document.createElement("li");
+    option.setAttribute("role", "option");
+    options.appendChild(option);
+    let link = document.createElement("a");
+    link.setAttribute("href", `#${item.controls}`);
+    link.textContent = item.title;
+    link.addEventListener("click", onSelect);
+    link.addEventListener("mouseover", onMouseOver);
+    option.appendChild(link);
   }
+  return fragment;
+}
 
-  export default {
-    name: 'MySelect',
-    data() {
-      return {
-        chevron: require('@/assets/icons.svg')
-      }
-    },
-    mounted() {
-      let fragment = createDropdown();
-      this.$refs.dropdownwrapper.appendChild(fragment);
-    }
+export default {
+  name: "MySelect",
+  data() {
+    return {
+      chevron: require("@/assets/icons.svg")
+    };
+  },
+  mounted() {
+    let fragment = createDropdown();
+    this.$refs.dropdownwrapper.appendChild(fragment);
   }
+};
 </script>
 
 <template>
@@ -96,7 +99,7 @@ function createDropdown() {
 <style lang="scss">
 .svg-icon {
   position: absolute;
-  right: .3rem;
+  right: 0.3rem;
   top: calc(50% - 1.1rem);
   z-index: 1001;
   svg {
@@ -110,14 +113,14 @@ function createDropdown() {
   &-toggle {
     align-items: center;
     background: none;
-    border: 1px solid rgba(60, 60, 60, .26);
+    border: 1px solid rgba(60, 60, 60, 0.26);
     border-radius: 4px;
     cursor: pointer;
     display: flex;
     min-height: 2.4rem;
     padding: 0 1rem;
     position: relative;
-    transition: border .25s;
+    transition: border 0.25s;
     user-select: none;
     white-space: normal;
     &:hover {
@@ -131,22 +134,22 @@ function createDropdown() {
 
   &.open {
     .dropdown-toggle {
-      border: 1px solid rgba(0, 0, 0, .26);
-      border-bottom: 0
+      border: 1px solid rgba(0, 0, 0, 0.26);
+      border-bottom: 0;
     }
     .dropdown-menu {
-      display: block
+      display: block;
     }
     .svg-icon {
-      transform: rotateX(-165deg) translateY(2px)
+      transform: rotateX(-165deg) translateY(2px);
     }
   }
 
   &-menu {
     background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, .26);
+    border: 1px solid rgba(0, 0, 0, 0.26);
     border-radius: 0 0 4px 4px;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.15);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
     border-top: none;
 
     display: none;
@@ -173,13 +176,14 @@ function createDropdown() {
         background-color: #fff;
         color: #00000099;
         display: block;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         text-decoration: none;
-        transition: background-color .25s, color .25s;
+        transition: background-color 0.25s, color 0.25s;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           background-color: #ccc;
-          color: #000
+          color: #000;
         }
       }
     }
