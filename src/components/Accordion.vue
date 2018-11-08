@@ -50,7 +50,7 @@ export default {
 </script>
 <style lang="scss">
 .accordions {
-    border-bottom: 1px solid #d9d9d9;
-    border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  border-top: 1px solid #d9d9d9;
 }
 </style>
