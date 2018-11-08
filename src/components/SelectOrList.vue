@@ -31,3 +31,9 @@ export default {
   }
 };
 </script>
+
+<style module>
+.vue-info__items {
+  outline: 1px solid limegreen;
+}
+</style>

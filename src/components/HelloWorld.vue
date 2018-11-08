@@ -7,6 +7,8 @@
       <select-or-list title="Ecosystem" :list="ecosystem" :mobile="mobile" />
     </div>
 
+    <accordion />
+
     <p>
       For guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -17,11 +19,13 @@
 
 <script>
 import SelectOrList from "@/components/SelectOrList";
+import Accordion from "@/components/Accordion";
 
 export default {
   name: "HelloWorld",
   props: ["msg"],
   components: {
+    Accordion,
     SelectOrList
   },
   data() {
