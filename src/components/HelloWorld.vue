@@ -150,7 +150,7 @@ export default {
     flex-basis: 33%;
     flex-grow: 1;
     margin: 0 1rem;
-    padding: 0 1rem 1rem;
+    padding: 1rem;
     @media (max-width: 680px) {
       border: 0;
       border-bottom: 1px solid #00000055;

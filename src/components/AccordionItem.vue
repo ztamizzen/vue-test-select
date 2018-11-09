@@ -61,7 +61,8 @@ export default {
         },
         {
           complete: done,
-          duration: 1000
+          duration: 250,
+          easing: "easeIn"
         }
       );
     },
@@ -75,8 +76,9 @@ export default {
           translateY: -50
         },
         {
-          duration: 500,
-          complete: done
+          duration: 250,
+          complete: done,
+          easing: "easeOut"
         }
       );
     }
@@ -133,7 +135,8 @@ export default {
     transform-origin: top;
   }
   &-content {
-    padding: 0 2rem 2rem 5.8rem;
+    overflow: hidden;
+    padding: 1.5rem 2rem 2rem 5.8rem;
   }
 }
 </style>

@@ -1,5 +1,19 @@
 <template>
     <section class="accordions faq">
+        <b-form inline class="justify-content-md-center p-3">
+            <label class="mx-sm-2" for="inlineFormCustomSelectPref">Preferences</label>
+            <b-form-select class="mb-2 mx-sm-2 mb-sm-0"
+                :value="null"
+                :options="{ '1': 'One', '2': 'Two', '3': 'Three' }"
+                id="inlineFormCustomSelectPref">
+                <option slot="first" :value="null">Choose&hellip;</option>
+            </b-form-select>
+            <b-form-input class="mx-sm-2" />
+            <b-form-checkbox class="mb-2 mx-sm-2 mb-sm-0">
+                Remember my preference
+            </b-form-checkbox>
+            <b-button variant="primary">Save</b-button>
+        </b-form>
         <accordion-item>
             <h3 slot="header">Var har hänt?</h3>
             <p>Vi var tidigt ute med information om att det fanns en risk för att vi inte skulle komma överens med en av våra tv-leverantörer Discovery, för att du och alla våra tv-kunder skulle veta om vad som pågick och varför. Tyvärr enades vi inte – vilket resulterade i att vi inte längre hade tillåtelse att sända Discoverys kanaler från och med 8 juni. Du fick då tills vidare ett nytt innehåll.</p>

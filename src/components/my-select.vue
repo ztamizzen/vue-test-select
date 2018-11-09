@@ -39,8 +39,8 @@ function createToggleDiv(defaultValue) {
 
   let chevron = document.createElement("span");
   chevron.classList.add("svg-icon");
-  chevron.innerHTML = `<svg class="svg-icon-chevron-down">
-      <use xlink:href="#svg-icon-chevron-down"></use>
+  chevron.innerHTML = `<svg class="svg-icon-caret-up-down">
+      <use xlink:href="#svg-icon-caret-up-down"></use>
     </svg>`;
   selectOptions.appendChild(chevron);
 
@@ -100,7 +100,7 @@ export default {
 .svg-icon {
   position: absolute;
   right: 0.3rem;
-  top: calc(50% - 1.1rem);
+  top: calc(50% - 1rem);
   z-index: 1001;
   svg {
     height: 2rem;
